@@ -7,11 +7,14 @@ import time
 import os
 import requests
 import logging
+from datetime import datetime
 
 
 class XiaohongshuScraper:
     def __init__(self, save_dir="downloaded_images"):
-        self.save_dir = save_dir
+        self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        self.save_dir = os.path.join(save_dir, self.timestamp)
+        self.start_time = datetime.now()
         self.setup_logging()
         self.setup_driver()
 
@@ -97,6 +100,15 @@ class XiaohongshuScraper:
             self.logger.error(f"Error downloading image {index}: {e}")
             return False
 
+    def save_metadata(self, url, total_images, successful_downloads, duration):
+        metadata_path = os.path.join(self.save_dir, "metadata.txt")
+        with open(metadata_path, "w") as f:
+            f.write(f"Timestamp: {self.timestamp}\n")
+            f.write(f"URL: {url}\n")
+            f.write(f"Total images found: {total_images}\n")
+            f.write(f"Successfully downloaded: {successful_downloads}\n")
+            f.write(f"Duration: {duration:.2f} seconds\n")
+
     def scrape_images(self, url):
         try:
             os.makedirs(self.save_dir, exist_ok=True)
@@ -137,6 +149,8 @@ class XiaohongshuScraper:
                 except Exception as e:
                     self.logger.error(f"Error processing image {index}: {e}")
 
+            duration = (datetime.now() - self.start_time).total_seconds()
+            self.save_metadata(url, len(images), successful_downloads, duration)
             self.logger.info(f"Successfully downloaded {successful_downloads} images")
 
         except Exception as e:
@@ -148,9 +162,15 @@ class XiaohongshuScraper:
 
 
 if __name__ == "__main__":
-    url = "https://www.xiaohongshu.com/search_result?keyword=translation%2520fail&source=web_search_result_notes&type=51"
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Scrape images from Xiaohongshu")
+    parser.add_argument("url", help="The URL to scrape")
+
+    args = parser.parse_args()
+
     scraper = XiaohongshuScraper()
-    scraper.scrape_images(url)
+    scraper.scrape_images(args.url)
 
     # Keep the script running and browser open
     try:
@@ -163,3 +183,4 @@ if __name__ == "__main__":
                 time.sleep(1)
         except KeyboardInterrupt:
             print("\nExiting...")
+            scraper.close_browser()
