@@ -62,6 +62,7 @@ jupyterlab==4.3.5
 jupyterlab_pygments==0.3.0
 jupyterlab_server==2.27.3
 jupyterlab_widgets==3.0.13
+kaleido==0.2.1
 kiwisolver==1.4.8
 llvmlite==0.44.0
 MarkupSafe==3.0.2
@@ -155,4 +156,5 @@ webencodings==0.5.1
 websocket-client==1.8.0
 wheel==0.45.1
 widgetsnbextension==4.0.13
+wordcloud==1.9.4
 wsproto==1.2.0
