@@ -1,6 +1,9 @@
 rohil_data_scrape/downloaded_images/*
 rohil_data_scrape/llm_detection_images/*
 rohil_data_scrape/llm_reports/*
+rohil_data_scrape/good_data/*
+data/*
+secrets.yaml
 test_images/
 
 # Byte-compiled / optimized / DLL files
