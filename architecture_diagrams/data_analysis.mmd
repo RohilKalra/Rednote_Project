@@ -1,0 +1,48 @@
+flowchart TD
+    subgraph Input ["Data Sources"]
+        A[CSV Dataset] -->|Load| B[Pandas DataFrame]
+    end
+
+    subgraph DataPrep ["01_data_preparation.ipynb"]
+        B -->|Text Cleaning| C[Clean Dataset]
+        C -->|GoogleTranslator| D[English ↔ Chinese Translations]
+        D -->|OpenAI API| E[Generate Text Embeddings]
+        E -->|text-embedding-3-small| F[English & Chinese Embeddings]
+        C -.->|Save Intermediate| G[(Processed DataFrame)]
+    end
+
+    subgraph TopicModel ["topic_modeling.ipynb"]
+        F -->|Filter Non-empty Text| H[Filtered Corpus]
+        H -->|BERTopic| I[Topic Modeling]
+        I -->|HDBSCAN Clustering| J[Document Clusters]
+        J -->|Generate| K[Topic Keywords]
+        K -->|Save Results| L[(Topic Model Results)]
+    end
+
+    subgraph EDA ["eda.ipynb"]
+        G -.->|Load| M[Analysis Dataset]
+        L -.->|Load| M
+        M -->|Calculate| N[Cosine Similarities]
+        N -->|Compare| O[EN-CN & EN-Trans Similarities]
+        O -->|Generate| P[Visualizations]
+        P -->|Scatter Plots| Q[Similarity Relationships]
+        P -->|Histograms| R[Semantic Preservation/Drift]
+    end
+
+    subgraph MultilingualTest ["multilingual_embedding_test.ipynb"]
+        F -.->|Input| S[Multilingual Analysis]
+        S -->|Test| T[Cross-lingual Capabilities]
+        T -->|Evaluate| U[Language Transfer Performance]
+    end
+
+    classDef input fill:#e0f7fa,stroke:#006064;
+    classDef dataPrep fill:#fff8e1,stroke:#ff8f00;
+    classDef topics fill:#f3e5f5,stroke:#6a1b9a;
+    classDef eda fill:#e8f5e9,stroke:#2e7d32;
+    classDef multilingual fill:#fff3e0,stroke:#e65100;
+    
+    class A,B input;
+    class B,C,D,E,F,G dataPrep;
+    class H,I,J,K,L topics;
+    class M,N,O,P,Q,R eda;
+    class S,T,U multilingual;
