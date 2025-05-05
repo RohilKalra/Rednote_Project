@@ -28,11 +28,18 @@ BASE_SAVE_DIR = "downloaded_images"
 DOWNLOAD_CHUNK_SIZE = 1024  # Chunk size for downloading images
 
 # Chrome Profile Settings
+
+CHROME_PROFILE_DIR = (
+    r"C:\Users\shiyi\AppData\Local\Google\Chrome\User Data\Default"
+)
+CHROME_PROFILE = "Default"
+
+'''
 CHROME_PROFILE_DIR = (
     "/Users/rohilkalra/Library/Application Support/Google/Chrome/Profile 14"
 )
 CHROME_PROFILE = "Profile 14"
-
+'''
 
 class XiaohongshuScraper:
     def __init__(self):
@@ -227,7 +234,7 @@ class XiaohongshuScraper:
 
 def read_prompts(file_path):
     """Read prompts from a file, skipping empty lines and stripping whitespace"""
-    with open(file_path, "r") as f:
+    with open(file_path, "r", encoding='utf-8') as f:
         return [line.strip() for line in f if line.strip()]
 
 

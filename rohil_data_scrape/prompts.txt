@@ -1,11 +1,5 @@
-Prompt In English
-RedNote Translation LLM
-RedNote Translation LLM Prompt
-RedNote Translation Emoji
-Strange Translation in RedNote
-RedNote Translation
-Breaking into RedNote translation
-Rednote translate Morse Code
-Rednote AI Translation
-Rednote LLM test
-Rednote LLM translator
+小红书翻译大模型
+小红书翻译大模型提示词
+小红书翻译表情包
+小红书离谱翻译
+小红书翻译
