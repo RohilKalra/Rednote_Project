@@ -17,7 +17,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException,
 # --- Constants ---
 
 # File and Directory Settings
-BASE_SAVE_DIR = "downloaded_images"  # Base folder to save post-specific subfolders
+BASE_SAVE_DIR = "downloaded_images_1"  # Base folder to save post-specific subfolders
 DOWNLOAD_CHUNK_SIZE = 1024  # Chunk size for downloading images (increased slightly)
 
 # Chrome Profile Settings (Ensure these are correct for your system)
