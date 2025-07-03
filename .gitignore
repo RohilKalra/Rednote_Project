@@ -178,3 +178,5 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 /rohil_data_scrape/downloaded_images_1
+rohil_data_scrape/final_unique_comments.txt
+rohil_data_scrape/non_chinese_comments.txt
