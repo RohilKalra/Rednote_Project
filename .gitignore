@@ -180,3 +180,10 @@ cython_debug/
 /rohil_data_scrape/downloaded_images_1
 rohil_data_scrape/final_unique_comments.txt
 rohil_data_scrape/non_chinese_comments.txt
+*.png
+data_analysis/processed_data.csv
+data_analysis/processed_data.pkl
+data_analysis/visualizations/english/eda/semantic_preservation_drift.png
+data_analysis/visualizations/english/eda/similarity_heatmap.png
+data_analysis/visualizations/english/eda/similarity_relationships.png
+data_analysis/visualizations/english/eda/tsne_embeddings.png
