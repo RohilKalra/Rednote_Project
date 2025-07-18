@@ -187,3 +187,5 @@ data_analysis/visualizations/english/eda/semantic_preservation_drift.png
 data_analysis/visualizations/english/eda/similarity_heatmap.png
 data_analysis/visualizations/english/eda/similarity_relationships.png
 data_analysis/visualizations/english/eda/tsne_embeddings.png
+
+results/
